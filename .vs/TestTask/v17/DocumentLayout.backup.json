@@ -1,0 +1,228 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\repos\\TestTask\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{68977EA0-4980-44C1-B486-E17BD0056D07}|TestTask\\TestTask.csproj|d:\\repos\\testtask\\testtask\\models\\employeesummary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68977EA0-4980-44C1-B486-E17BD0056D07}|TestTask\\TestTask.csproj|solutionrelative:testtask\\models\\employeesummary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68977EA0-4980-44C1-B486-E17BD0056D07}|TestTask\\TestTask.csproj|d:\\repos\\testtask\\testtask\\services\\xmlprocessingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68977EA0-4980-44C1-B486-E17BD0056D07}|TestTask\\TestTask.csproj|solutionrelative:testtask\\services\\xmlprocessingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68977EA0-4980-44C1-B486-E17BD0056D07}|TestTask\\TestTask.csproj|d:\\repos\\testtask\\testtask\\transform.xslt||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{68977EA0-4980-44C1-B486-E17BD0056D07}|TestTask\\TestTask.csproj|solutionrelative:testtask\\transform.xslt||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68977EA0-4980-44C1-B486-E17BD0056D07}|TestTask\\TestTask.csproj|d:\\repos\\testtask\\testtask\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68977EA0-4980-44C1-B486-E17BD0056D07}|TestTask\\TestTask.csproj|solutionrelative:testtask\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68977EA0-4980-44C1-B486-E17BD0056D07}|TestTask\\TestTask.csproj|d:\\repos\\testtask\\testtask\\custommessagebox.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68977EA0-4980-44C1-B486-E17BD0056D07}|TestTask\\TestTask.csproj|solutionrelative:testtask\\custommessagebox.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68977EA0-4980-44C1-B486-E17BD0056D07}|TestTask\\TestTask.csproj|d:\\repos\\testtask\\testtask\\utils\\monthutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68977EA0-4980-44C1-B486-E17BD0056D07}|TestTask\\TestTask.csproj|solutionrelative:testtask\\utils\\monthutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68977EA0-4980-44C1-B486-E17BD0056D07}|TestTask\\TestTask.csproj|d:\\repos\\testtask\\testtask\\services\\ixmlprocessingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68977EA0-4980-44C1-B486-E17BD0056D07}|TestTask\\TestTask.csproj|solutionrelative:testtask\\services\\ixmlprocessingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68977EA0-4980-44C1-B486-E17BD0056D07}|TestTask\\TestTask.csproj|d:\\repos\\testtask\\testtask\\models\\monthlysummary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68977EA0-4980-44C1-B486-E17BD0056D07}|TestTask\\TestTask.csproj|solutionrelative:testtask\\models\\monthlysummary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68977EA0-4980-44C1-B486-E17BD0056D07}|TestTask\\TestTask.csproj|d:\\repos\\testtask\\testtask\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{68977EA0-4980-44C1-B486-E17BD0056D07}|TestTask\\TestTask.csproj|solutionrelative:testtask\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68977EA0-4980-44C1-B486-E17BD0056D07}|TestTask\\TestTask.csproj|d:\\repos\\testtask\\testtask\\custommessagebox.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{68977EA0-4980-44C1-B486-E17BD0056D07}|TestTask\\TestTask.csproj|solutionrelative:testtask\\custommessagebox.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\firew\\Downloads\\\u0422\u0435\u0441\u0442\u043E\u0432\u043E\u0435 \u0437\u0430\u0434\u0430\u043D\u0438\u0435 \u0420\u0435\u0444\u043E\u0440\u043C\u0430\u0442\u043E\u0440 2025\\Data1.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 1156,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CustomMessageBox.xaml.cs",
+              "DocumentMoniker": "D:\\repos\\TestTask\\TestTask\\CustomMessageBox.xaml.cs",
+              "RelativeDocumentMoniker": "TestTask\\CustomMessageBox.xaml.cs",
+              "ToolTip": "D:\\repos\\TestTask\\TestTask\\CustomMessageBox.xaml.cs",
+              "RelativeToolTip": "TestTask\\CustomMessageBox.xaml.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAiwDEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-16T07:10:32.448Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Transform.xslt",
+              "DocumentMoniker": "D:\\repos\\TestTask\\TestTask\\Transform.xslt",
+              "RelativeDocumentMoniker": "TestTask\\Transform.xslt",
+              "ToolTip": "D:\\repos\\TestTask\\TestTask\\Transform.xslt",
+              "RelativeToolTip": "TestTask\\Transform.xslt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003586|",
+              "WhenOpened": "2026-04-16T06:33:54.519Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CustomMessageBox.xaml",
+              "DocumentMoniker": "D:\\repos\\TestTask\\TestTask\\CustomMessageBox.xaml",
+              "RelativeDocumentMoniker": "TestTask\\CustomMessageBox.xaml",
+              "ToolTip": "D:\\repos\\TestTask\\TestTask\\CustomMessageBox.xaml",
+              "RelativeToolTip": "TestTask\\CustomMessageBox.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-04-16T06:55:05.213Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Data1.xml",
+              "DocumentMoniker": "C:\\Users\\firew\\Downloads\\\u0422\u0435\u0441\u0442\u043E\u0432\u043E\u0435 \u0437\u0430\u0434\u0430\u043D\u0438\u0435 \u0420\u0435\u0444\u043E\u0440\u043C\u0430\u0442\u043E\u0440 2025\\Data1.xml",
+              "ToolTip": "C:\\Users\\firew\\Downloads\\\u0422\u0435\u0441\u0442\u043E\u0432\u043E\u0435 \u0437\u0430\u0434\u0430\u043D\u0438\u0435 \u0420\u0435\u0444\u043E\u0440\u043C\u0430\u0442\u043E\u0440 2025\\Data1.xml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
+              "WhenOpened": "2026-04-16T06:50:15.513Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EmployeeSummary.cs",
+              "DocumentMoniker": "D:\\repos\\TestTask\\TestTask\\Models\\EmployeeSummary.cs",
+              "RelativeDocumentMoniker": "TestTask\\Models\\EmployeeSummary.cs",
+              "ToolTip": "D:\\repos\\TestTask\\TestTask\\Models\\EmployeeSummary.cs",
+              "RelativeToolTip": "TestTask\\Models\\EmployeeSummary.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-16T06:14:20.49Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "XmlProcessingService.cs",
+              "DocumentMoniker": "D:\\repos\\TestTask\\TestTask\\Services\\XmlProcessingService.cs",
+              "RelativeDocumentMoniker": "TestTask\\Services\\XmlProcessingService.cs",
+              "ToolTip": "D:\\repos\\TestTask\\TestTask\\Services\\XmlProcessingService.cs",
+              "RelativeToolTip": "TestTask\\Services\\XmlProcessingService.cs",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAiwIMAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-16T06:12:43.736Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IXmlProcessingService.cs",
+              "DocumentMoniker": "D:\\repos\\TestTask\\TestTask\\Services\\IXmlProcessingService.cs",
+              "RelativeDocumentMoniker": "TestTask\\Services\\IXmlProcessingService.cs",
+              "ToolTip": "D:\\repos\\TestTask\\TestTask\\Services\\IXmlProcessingService.cs",
+              "RelativeToolTip": "TestTask\\Services\\IXmlProcessingService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-16T06:12:19.406Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MonthUtil.cs",
+              "DocumentMoniker": "D:\\repos\\TestTask\\TestTask\\Utils\\MonthUtil.cs",
+              "RelativeDocumentMoniker": "TestTask\\Utils\\MonthUtil.cs",
+              "ToolTip": "D:\\repos\\TestTask\\TestTask\\Utils\\MonthUtil.cs",
+              "RelativeToolTip": "TestTask\\Utils\\MonthUtil.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAiwCgAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-16T06:11:23.494Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MonthlySummary.cs",
+              "DocumentMoniker": "D:\\repos\\TestTask\\TestTask\\Models\\MonthlySummary.cs",
+              "RelativeDocumentMoniker": "TestTask\\Models\\MonthlySummary.cs",
+              "ToolTip": "D:\\repos\\TestTask\\TestTask\\Models\\MonthlySummary.cs",
+              "RelativeToolTip": "TestTask\\Models\\MonthlySummary.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-16T06:10:48.065Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\repos\\TestTask\\TestTask\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "TestTask\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\repos\\TestTask\\TestTask\\MainWindow.xaml.cs",
+              "RelativeToolTip": "TestTask\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAI8AAAAAAAAAAAAiwLUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-16T04:44:59.508Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\repos\\TestTask\\TestTask\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "TestTask\\MainWindow.xaml",
+              "ToolTip": "D:\\repos\\TestTask\\TestTask\\MainWindow.xaml",
+              "RelativeToolTip": "TestTask\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-04-16T04:37:02.555Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 500,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{a0c5197d-0ac7-4b63-97cd-8872a789d233}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3822e751-eb69-4b0e-b301-595a9e4c74d5}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

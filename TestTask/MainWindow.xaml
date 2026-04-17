@@ -1,0 +1,432 @@
+﻿<Window x:Class="TestTask.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:effects="clr-namespace:System.Windows.Media.Effects;assembly=PresentationCore"
+        mc:Ignorable="d"
+        Title="Test Task"
+        Height="720" Width="1180"
+        MinHeight="680" MinWidth="1080"
+        WindowStartupLocation="CenterScreen"
+        Background="#0B0F19">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="PrimaryBrush" Color="#8B5CF6"/>
+        <SolidColorBrush x:Key="PrimaryDarkBrush" Color="#7C3AED"/>
+        <SolidColorBrush x:Key="AccentBrush" Color="#10B981"/>
+        <SolidColorBrush x:Key="AccentDarkBrush" Color="#059669"/>
+        <SolidColorBrush x:Key="SurfaceBrush" Color="#0B0F19"/>
+        <SolidColorBrush x:Key="CardBrush" Color="#111827"/>
+        <SolidColorBrush x:Key="SoftBrush" Color="#1F2937"/>
+        <SolidColorBrush x:Key="TextBrush" Color="#F8FAFC"/>
+        <SolidColorBrush x:Key="MutedTextBrush" Color="#94A3B8"/>
+        <SolidColorBrush x:Key="BorderBrushSoft" Color="#334155"/>
+        <SolidColorBrush x:Key="HeaderBrush" Color="#1E293B"/>
+
+        <effects:DropShadowEffect x:Key="SoftShadow" BlurRadius="25" ShadowDepth="4" Opacity="0.4" Color="#000000"/>
+
+        <Style TargetType="ScrollBar">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Width" Value="8"/>
+            <Setter Property="Margin" Value="2,0,0,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ScrollBar">
+                        <Grid Background="Transparent">
+                            <Track x:Name="PART_Track" IsDirectionReversed="true">
+                                <Track.Thumb>
+                                    <Thumb>
+                                        <Thumb.Template>
+                                            <ControlTemplate TargetType="Thumb">
+                                                <Border Background="#475569" CornerRadius="4"/>
+                                            </ControlTemplate>
+                                        </Thumb.Template>
+                                    </Thumb>
+                                </Track.Thumb>
+                            </Track>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="CardStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource CardBrush}"/>
+            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Effect" Value="{StaticResource SoftShadow}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrushSoft}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+        <Style x:Key="SectionTitleStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+            <Setter Property="Margin" Value="0,0,0,16"/>
+        </Style>
+
+        <Style x:Key="LabelStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="{StaticResource MutedTextBrush}"/>
+            <Setter Property="Margin" Value="0,12,0,6"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+            <Setter Property="Background" Value="{StaticResource SoftBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrushSoft}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Height" Value="44"/>
+            <Setter Property="Padding" Value="14,0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="CaretBrush" Value="{StaticResource PrimaryBrush}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="12">
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="0" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource PrimaryBrush}"/>
+                                <Setter TargetName="Bd" Property="Background" Value="#171F2E"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="ComboBoxItem">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+            <Setter Property="Padding" Value="14,10"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBoxItem">
+                        <Border x:Name="Bd" Background="{TemplateBinding Background}" CornerRadius="8" Padding="{TemplateBinding Padding}" Margin="4,2">
+                            <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#334155"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#2E1065"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+            <Setter Property="Background" Value="{StaticResource SoftBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrushSoft}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Height" Value="44"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <ToggleButton x:Name="ToggleButton" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" Foreground="{TemplateBinding Foreground}" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
+                                <ToggleButton.Template>
+                                    <ControlTemplate TargetType="ToggleButton">
+                                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="12">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="36"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Path Grid.Column="1" Fill="{StaticResource MutedTextBrush}" Data="M 0 0 L 5 5 L 10 0 Z" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,2,0,0"/>
+                                            </Grid>
+                                        </Border>
+                                    </ControlTemplate>
+                                </ToggleButton.Template>
+                            </ToggleButton>
+
+                            <ContentPresenter x:Name="ContentSite" IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}" Margin="14,0,36,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+                            <Popup x:Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True" Focusable="False" PopupAnimation="Fade">
+                                <Border x:Name="DropDown" Background="#171F2E" BorderBrush="{StaticResource BorderBrushSoft}" BorderThickness="1" CornerRadius="12" Margin="0,6,0,0" Width="{Binding ActualWidth, ElementName=ToggleButton}">
+                                    <ScrollViewer Margin="0,4" MaxHeight="200">
+                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained"/>
+                                    </ScrollViewer>
+                                </Border>
+                            </Popup>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" Value="#475569"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+            <Setter Property="Height" Value="44"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,8,0,8"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="BtnBorder" Background="{TemplateBinding Background}" CornerRadius="12">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="BtnBorder" Property="Background" Value="{StaticResource PrimaryDarkBrush}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="BtnBorder" Property="Opacity" Value="0.8"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SuccessButtonStyle" TargetType="Button" BasedOn="{StaticResource PrimaryButtonStyle}">
+            <Setter Property="Background" Value="{StaticResource AccentBrush}"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource AccentDarkBrush}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="RowBackground" Value="{StaticResource CardBrush}"/>
+            <Setter Property="AlternatingRowBackground" Value="#171F2E"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="{StaticResource BorderBrushSoft}"/>
+            <Setter Property="VerticalGridLinesBrush" Value="Transparent"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="RowHeaderWidth" Value="0"/>
+            <Setter Property="CanUserAddRows" Value="False"/>
+            <Setter Property="CanUserDeleteRows" Value="False"/>
+            <Setter Property="CanUserResizeRows" Value="False"/>
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="SelectionMode" Value="Single"/>
+            <Setter Property="SelectionUnit" Value="FullRow"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="{StaticResource HeaderBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource MutedTextBrush}"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="16,14"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrushSoft}"/>
+            <Setter Property="BorderThickness" Value="0,0,0,2"/>
+        </Style>
+
+        <Style TargetType="DataGridCell">
+            <Setter Property="Padding" Value="16,12"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="DataGridCell">
+                        <Border Padding="{TemplateBinding Padding}" Background="Transparent">
+                            <ContentPresenter VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="DataGridRow">
+            <Setter Property="Height" Value="48"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#1E293B"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#2E1065"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Ellipse Width="450" Height="450" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-150,-150,0,0" IsHitTestVisible="False">
+            <Ellipse.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="#208B5CF6" Offset="0"/>
+                    <GradientStop Color="#000B0F19" Offset="1"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+
+        <Ellipse Width="400" Height="400" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,-100,-100" IsHitTestVisible="False">
+            <Ellipse.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="#1510B981" Offset="0"/>
+                    <GradientStop Color="#000B0F19" Offset="1"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+
+        <Grid Margin="24">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" Style="{StaticResource CardStyle}" Padding="24" Margin="0,0,0,20">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="Менеджер выплат сотрудникам" FontSize="28" FontWeight="Bold" Foreground="{StaticResource TextBrush}" TextWrapping="Wrap"/>
+                        <TextBlock Text="Загрузка XML, XSLT-обработка, пересчет сумм и удобный просмотр результатов" Margin="0,6,0,0" FontSize="14" Foreground="{StaticResource MutedTextBrush}" TextWrapping="Wrap"/>
+                    </StackPanel>
+
+                    <Border Grid.Column="1" Background="#1E293B" CornerRadius="16" Padding="20,16" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" BorderBrush="#334155" BorderThickness="1">
+                        <StackPanel>
+                            <TextBlock Text="Текущий файл" FontSize="12" FontWeight="SemiBold" Foreground="{StaticResource MutedTextBrush}"/>
+                            <TextBlock x:Name="CurrentFileText" Text="Файл не выбран" Margin="0,6,0,0" FontSize="15" FontWeight="Bold" Foreground="{StaticResource PrimaryBrush}"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="380" MinWidth="300" MaxWidth="500"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="*" MinWidth="400"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" Style="{StaticResource CardStyle}">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                        <StackPanel Margin="0,0,12,0">
+                            <TextBlock Text="Управление данными" Style="{StaticResource SectionTitleStyle}"/>
+
+                            <Button Content="Загрузить XML-файл" Click="OnLoadFileClick" Style="{StaticResource PrimaryButtonStyle}"/>
+                            <Button Content="Сохранить XML-файл" Click="OnSaveFileClick" Style="{StaticResource SuccessButtonStyle}" Margin="0,0,0,24"/>
+
+                            <Border Background="#1E293B" BorderBrush="#334155" BorderThickness="1" CornerRadius="16" Padding="16" Margin="0,0,0,30">
+                                <StackPanel>
+                                    <TextBlock Text="Что делает программа?" FontWeight="SemiBold" FontSize="14" Foreground="{StaticResource TextBrush}"/>
+                                    <TextBlock Text="• Загружает .xml&#10;• Выполняет XSLT-преобразование&#10;• Считает суммы по сотрудникам и месяцам&#10;• Позволяет добавлять новые выплаты" Margin="0,10,0,0" FontSize="13" LineHeight="20" Foreground="{StaticResource MutedTextBrush}"/>
+                                </StackPanel>
+                            </Border>
+
+                            <TextBlock Text="Добавить новую выплату" Style="{StaticResource SectionTitleStyle}"/>
+
+                            <TextBlock Text="Имя" Style="{StaticResource LabelStyle}"/>
+                            <TextBox x:Name="InputName"/>
+
+                            <TextBlock Text="Фамилия" Style="{StaticResource LabelStyle}"/>
+                            <TextBox x:Name="InputSurname"/>
+
+                            <TextBlock Text="Сумма" Style="{StaticResource LabelStyle}"/>
+                            <TextBox x:Name="InputAmount"/>
+
+                            <TextBlock Text="Месяц" Style="{StaticResource LabelStyle}"/>
+                            <ComboBox x:Name="InputMonth" Margin="0,0,0,20" SelectedIndex="0">
+                                <ComboBoxItem Content="Январь" Tag="january"/>
+                                <ComboBoxItem Content="Февраль" Tag="february"/>
+                                <ComboBoxItem Content="Март" Tag="march"/>
+                                <ComboBoxItem Content="Апрель" Tag="april"/>
+                                <ComboBoxItem Content="Май" Tag="may"/>
+                                <ComboBoxItem Content="Июнь" Tag="june"/>
+                                <ComboBoxItem Content="Июль" Tag="july"/>
+                                <ComboBoxItem Content="Август" Tag="august"/>
+                                <ComboBoxItem Content="Сентябрь" Tag="september"/>
+                                <ComboBoxItem Content="Октябрь" Tag="october"/>
+                                <ComboBoxItem Content="Ноябрь" Tag="november"/>
+                                <ComboBoxItem Content="Декабрь" Tag="december"/>
+                            </ComboBox>
+
+                            <Button Content="Добавить и пересчитать" Click="OnAddClick" Style="{StaticResource PrimaryButtonStyle}"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Border>
+
+                <GridSplitter Grid.Column="1" Width="4" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="Transparent" Cursor="SizeWE"/>
+
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Border Grid.Row="0" Style="{StaticResource CardStyle}">
+                        <DockPanel>
+                            <Grid DockPanel.Dock="Top" Margin="0,0,0,16">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel>
+                                    <TextBlock Text="Сотрудники" FontSize="20" FontWeight="Bold" Foreground="{StaticResource TextBrush}"/>
+                                    <TextBlock Text="Общая сумма выплат по каждому сотруднику" Margin="0,4,0,0" FontSize="13" Foreground="{StaticResource MutedTextBrush}"/>
+                                </StackPanel>
+                            </Grid>
+
+                            <DataGrid x:Name="EmployeesGrid">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Имя" Binding="{Binding Name}" Width="*"/>
+                                    <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}" Width="*"/>
+                                    <DataGridTextColumn Header="Итоговая сумма" Binding="{Binding TotalSalary, StringFormat=N2}" Width="*"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </DockPanel>
+                    </Border>
+
+                    <Border Grid.Row="2" Style="{StaticResource CardStyle}">
+                        <DockPanel>
+                            <Grid DockPanel.Dock="Top" Margin="0,0,0,16">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel>
+                                    <TextBlock Text="Выплаты по месяцам" FontSize="20" FontWeight="Bold" Foreground="{StaticResource TextBrush}"/>
+                                    <TextBlock Text="Суммарные amount по каждому месяцу" Margin="0,4,0,0" FontSize="13" Foreground="{StaticResource MutedTextBrush}"/>
+                                </StackPanel>
+                            </Grid>
+
+                            <DataGrid x:Name="MonthsGrid">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Месяц" Binding="{Binding Month}" Width="*"/>
+                                    <DataGridTextColumn Header="Сумма выплат" Binding="{Binding TotalAmount, StringFormat=N2}" Width="*"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </DockPanel>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
