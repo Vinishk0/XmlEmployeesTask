@@ -1,68 +1,63 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Globalization;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using TestTask.Configuration;
+using TestTask.Models;
 using TestTask.Services;
 
 namespace TestTask
 {
     public partial class MainWindow : Window
     {
-        private readonly string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-        private readonly string employeesPath;
-        private readonly string xsltPath;
-
-        private string currentDataPath;
+        private readonly AppPaths _paths;
         private readonly IXmlProcessingService _xmlService;
+        private readonly IPaymentValidator _paymentValidator;
+
+        private string? _currentDataPath;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            _xmlService = new XmlProcessingService();
+            _paths = App.Services.Paths;
+            _xmlService = App.Services.XmlService;
+            _paymentValidator = App.Services.PaymentValidator;
 
-            employeesPath = Path.Combine(baseDirectory, "Employees.xml");
-            xsltPath = Path.Combine(baseDirectory, "Transform.xslt");
+            Directory.CreateDirectory(_paths.BaseDirectory);
 
-            Directory.CreateDirectory(baseDirectory);
-
-            string defaultData1 = Path.Combine(baseDirectory, "Data1.xml");
-            if (File.Exists(defaultData1))
+            if (File.Exists(_paths.DefaultDataFile))
             {
-                currentDataPath = defaultData1;
-                UpdateCurrentFileLabel();
+                _currentDataPath = _paths.DefaultDataFile;
                 TryProcessTransformation();
             }
-            else
-            {
-                UpdateCurrentFileLabel();
-            }
+
+            UpdateCurrentFileLabel();
         }
 
         private void OnLoadFileClick(object sender, RoutedEventArgs e)
         {
             try
             {
-                OpenFileDialog dialog = new OpenFileDialog
+                OpenFileDialog dialog = new()
                 {
                     Title = "Select XML file",
                     Filter = "XML files (*.xml)|*.xml|All files (*.*)|*.*",
                     Multiselect = false,
                     CheckFileExists = true,
-                    InitialDirectory = "C:\\"
+                    InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
                 };
 
-                if (dialog.ShowDialog() == true)
-                {
-                    currentDataPath = dialog.FileName;
-                    UpdateCurrentFileLabel();
+                if (dialog.ShowDialog() != true)
+                    return;
 
-                    if (TryProcessTransformation())
-                    {
-                        CustomMessageBox.Show("XML-файл успешно загружен и обработан!", "Готово", MessageBoxImage.Information);
-                    }
+                _currentDataPath = dialog.FileName;
+                UpdateCurrentFileLabel();
+
+                if (TryProcessTransformation())
+                {
+                    CustomMessageBox.Show("XML-файл успешно загружен и обработан!", "Готово", MessageBoxImage.Information);
                 }
             }
             catch (Exception ex)
@@ -73,9 +68,12 @@ namespace TestTask
 
         private bool TryProcessTransformation()
         {
+            if (string.IsNullOrWhiteSpace(_currentDataPath))
+                return false;
+
             try
             {
-                _xmlService.ProcessTransformation(currentDataPath, xsltPath, employeesPath);
+                _xmlService.ProcessTransformation(_currentDataPath, _paths.XsltFile, _paths.EmployeesFile);
                 RefreshUI();
                 return true;
             }
@@ -88,49 +86,43 @@ namespace TestTask
 
         private void RefreshUI()
         {
-            if (string.IsNullOrWhiteSpace(currentDataPath)) return;
+            if (string.IsNullOrWhiteSpace(_currentDataPath))
+                return;
 
-            EmployeesGrid.ItemsSource = _xmlService.GetEmployeeSummaries(employeesPath);
-            MonthsGrid.ItemsSource = _xmlService.GetMonthlySummaries(currentDataPath);
+            EmployeesGrid.ItemsSource = _xmlService.GetEmployeeSummaries(_paths.EmployeesFile);
+            MonthsGrid.ItemsSource = _xmlService.GetMonthlySummaries(_currentDataPath);
         }
 
         private void OnAddClick(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(currentDataPath) || !File.Exists(currentDataPath))
+            if (string.IsNullOrWhiteSpace(_currentDataPath) || !File.Exists(_currentDataPath))
             {
-                CustomMessageBox.Show("Сначала загрузите Data1.xml или Data2.xml.", "Внимание", MessageBoxImage.Warning);
+                CustomMessageBox.Show("Сначала загрузите XML-файл с данными.", "Внимание", MessageBoxImage.Warning);
                 return;
             }
 
-            string name = InputName.Text.Trim();
-            string surname = InputSurname.Text.Trim();
-            string amountStr = InputAmount.Text.Replace(',', '.').Trim();
-            string month = (InputMonth.SelectedItem as ComboBoxItem)?.Tag?.ToString() ?? (InputMonth.SelectedItem as ComboBoxItem)?.Content?.ToString();
-
-            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(surname) ||
-                string.IsNullOrEmpty(amountStr) || string.IsNullOrEmpty(month))
+            PaymentInput payment = new()
             {
-                CustomMessageBox.Show("Пожалуйста, заполните все поля.", "Ошибка", MessageBoxImage.Warning);
-                return;
-            }
+                Name = InputName.Text.Trim(),
+                Surname = InputSurname.Text.Trim(),
+                Amount = InputAmount.Text.Replace(',', '.').Trim(),
+                Month = GetSelectedMonth()
+            };
 
-            if (!double.TryParse(amountStr, NumberStyles.Any, CultureInfo.InvariantCulture, out _))
+            ValidationResult validation = _paymentValidator.Validate(payment);
+            if (!validation.IsValid)
             {
-                CustomMessageBox.Show("Недопустимый формат суммы.", "Ошибка", MessageBoxImage.Warning);
+                CustomMessageBox.Show(validation.ErrorMessage!, "Ошибка", MessageBoxImage.Warning);
                 return;
             }
 
             try
             {
-                _xmlService.AddNewPayment(currentDataPath, name, surname, amountStr, month);
+                _xmlService.AddNewPayment(_currentDataPath, payment);
 
                 if (TryProcessTransformation())
                 {
-                    InputName.Clear();
-                    InputSurname.Clear();
-                    InputAmount.Clear();
-                    InputMonth.SelectedIndex = -1;
-
+                    ClearPaymentForm();
                     CustomMessageBox.Show("Новый платеж успешно добавлен!", "Готово", MessageBoxImage.Information);
                 }
             }
@@ -144,13 +136,13 @@ namespace TestTask
         {
             try
             {
-                if (!File.Exists(employeesPath))
+                if (!File.Exists(_paths.EmployeesFile))
                 {
                     CustomMessageBox.Show("Сначала выполните обработку и сформируйте файл Employees.xml.", "Нет данных", MessageBoxImage.Warning);
                     return;
                 }
 
-                SaveFileDialog saveDialog = new SaveFileDialog
+                SaveFileDialog saveDialog = new()
                 {
                     Title = "Сохранить сформированный XML-файл",
                     Filter = "XML файл (*.xml)|*.xml|Все файлы (*.*)|*.*",
@@ -160,11 +152,11 @@ namespace TestTask
                     OverwritePrompt = true
                 };
 
-                if (saveDialog.ShowDialog() == true)
-                {
-                    File.Copy(employeesPath, saveDialog.FileName, true);
-                    CustomMessageBox.Show("Файл успешно сохранен.", "Готово", MessageBoxImage.Information);
-                }
+                if (saveDialog.ShowDialog() != true)
+                    return;
+
+                File.Copy(_paths.EmployeesFile, saveDialog.FileName, true);
+                CustomMessageBox.Show("Файл успешно сохранен.", "Готово", MessageBoxImage.Information);
             }
             catch (Exception ex)
             {
@@ -172,11 +164,27 @@ namespace TestTask
             }
         }
 
+        private string GetSelectedMonth()
+        {
+            if (InputMonth.SelectedItem is ComboBoxItem item)
+                return item.Tag?.ToString() ?? item.Content?.ToString() ?? string.Empty;
+
+            return string.Empty;
+        }
+
+        private void ClearPaymentForm()
+        {
+            InputName.Clear();
+            InputSurname.Clear();
+            InputAmount.Clear();
+            InputMonth.SelectedIndex = -1;
+        }
+
         private void UpdateCurrentFileLabel()
         {
-            CurrentFileText.Text = string.IsNullOrWhiteSpace(currentDataPath)
+            CurrentFileText.Text = string.IsNullOrWhiteSpace(_currentDataPath)
                 ? "Файл не выбран"
-                : Path.GetFileName(currentDataPath);
+                : Path.GetFileName(_currentDataPath);
         }
     }
 }

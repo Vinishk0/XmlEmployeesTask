@@ -6,8 +6,8 @@ namespace TestTask.Services
     public interface IXmlProcessingService
     {
         void ProcessTransformation(string dataPath, string xsltPath, string employeesPath);
-        void AddNewPayment(string dataPath, string name, string surname, string amountStr, string month);
-        List<EmployeeSummary> GetEmployeeSummaries(string employeesPath);
-        List<MonthlySummary> GetMonthlySummaries(string dataPath);
+        void AddNewPayment(string dataPath, PaymentInput payment);
+        IReadOnlyList<EmployeeSummary> GetEmployeeSummaries(string employeesPath);
+        IReadOnlyList<MonthlySummary> GetMonthlySummaries(string dataPath);
     }
 }

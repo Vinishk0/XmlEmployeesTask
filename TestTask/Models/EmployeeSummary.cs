@@ -1,9 +1,9 @@
 ﻿namespace TestTask.Models
 {
-    public class EmployeeSummary
+    public sealed class EmployeeSummary
     {
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public double TotalSalary { get; set; }
+        public string Name { get; init; } = string.Empty;
+        public string Surname { get; init; } = string.Empty;
+        public double TotalSalary { get; init; }
     }
 }

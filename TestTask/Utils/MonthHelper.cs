@@ -1,10 +1,9 @@
-﻿namespace TestTask.Utils
+namespace TestTask.Utils
 {
     public static class MonthHelper
     {
-        public static int GetMonthOrder(string month)
-        {
-            return month?.ToLower() switch
+        public static int GetMonthOrder(string? month) =>
+            month?.ToLower() switch
             {
                 "january" or "январь" => 0,
                 "february" or "февраль" => 1,
@@ -20,11 +19,9 @@
                 "december" or "декабрь" => 11,
                 _ => 99
             };
-        }
 
-        public static string GetMonthRu(string month)
-        {
-            return month?.ToLower() switch
+        public static string GetMonthRu(string? month) =>
+            month?.ToLower() switch
             {
                 "january" => "Январь",
                 "february" => "Февраль",
@@ -38,8 +35,7 @@
                 "october" => "Октябрь",
                 "november" => "Ноябрь",
                 "december" => "Декабрь",
-                _ => month
+                _ => month ?? string.Empty
             };
-        }
     }
 }

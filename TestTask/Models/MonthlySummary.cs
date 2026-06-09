@@ -1,9 +1,9 @@
 ﻿namespace TestTask.Models
 {
-    public class MonthlySummary
+    public sealed class MonthlySummary
     {
-        public string MonthKey { get; set; }
-        public string Month { get; set; }
-        public double TotalAmount { get; set; }
+        public string MonthKey { get; init; } = string.Empty;
+        public string Month { get; init; } = string.Empty;
+        public double TotalAmount { get; init; }
     }
 }
